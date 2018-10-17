@@ -5,14 +5,16 @@ import TableHeader from './tableHeader';
 import TableBody from './tableBody';
 
 class Table extends React.Component {
-    render() {
-        return (
-          <table>
-            <TableHeader />
-            <TableBody />
-          </table>
-        );
-    }
+  render() {
+    const { characterData } = this.props;
+
+    return (
+      <table>
+        <TableHeader />
+        <TableBody characterData={characterData} />
+      </table>
+    );
+  }
 }
 
 export default Table;
