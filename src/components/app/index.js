@@ -1,16 +1,20 @@
 import React from 'react';
-import styles from './style.scss';
+import ReactDOM from 'react-dom';
+
+import Board from './../board';
 
 export class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
-      <section className="container">
-        <h1 className={styles.title}>Hello World!</h1>
-      </section>
+      <div className="game">
+        <div className="game-board">
+          <Board />
+        </div>
+        <div className="game-info">
+          <div>{/* status */}</div>
+          <ol>{/* TODO */}</ol>
+        </div>
+      </div>
     );
   }
 }
