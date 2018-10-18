@@ -1,5 +1,7 @@
 import React from 'react';
-import styles from './style.scss';
+
+import Header from './../header';
+import Main from './../main';
 
 export class App extends React.Component {
   constructor(props) {
@@ -8,9 +10,10 @@ export class App extends React.Component {
 
   render() {
     return (
-      <section className="container">
-        <h1 className={styles.title}>Hello World!</h1>
-      </section>
+      <div>
+        <Header />
+        <Main />
+      </div>
     );
   }
 }
