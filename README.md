@@ -1,20 +1,24 @@
 # React Playground
-This repository just tracks some tests and experiments made while learning React.js
 
-### Get started
-Clone the project to a local folder and install dependencies with
+This is a learning repo tracking exercises and tutorial-based experiments, done while exploring the React.js realm.
 
-```bash
-$ yarn
-```
+The repo has various branches, each one is dedicated to a specific exercise.
 
-To start webserver on `localhost:8090`
+### Quick reference to the content
+* branch `master` &rarr; simple "getting started" app, to explore *props*, *state* and very basic *form handling* [[following this tutorial](https://www.taniarascia.com/getting-started-with-react/)]
 
-```bash
-$ yarn start
-```
+* branch `form-handling` &rarr; basic live validation of form input
 
-### Credits and License
-This project is built on top of the [**react minimal** starter kit](https://github.com/moebiusmania/react-minimal).
+* branch `tic-tac-toe` &rarr; tic tac toe game made with React.js [[following the reactjs.org tutorial](https://reactjs.org/tutorial/tutorial.html)]
 
-Everything is released under the [MIT license](LICENSE).
+* branch `react-router` &rarr; experiment with react-router [[following this tutorial](https://medium.com/@pshrmn/a-simple-react-router-v4-tutorial-7f23ff27adf)]
+
+* branch `redux` &rarr; todo app made with redux, following Dan Abramov's course on *egghead.io*
+
+Foobar is a Python library for dealing with word pluralization.
+
+## Installation
+To get started with each of the exercises, you'll just need to clone the appropriate branch and install dependencies with `$ yarn`. To launch devServer on `localhost:8090`, type `$ yarn start`.
+
+## Credits
+Each exercise is built on top of the [react minimal starter kit](https://github.com/moebiusmania/react-minimal) by moebiusmania.
