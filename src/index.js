@@ -2,35 +2,64 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, combineReducers } from 'redux';
 
-const todos = (state = [], action) => {
+const todo = (state, action) => {
   switch (action.type) {
     case 'ADD_TODO':
-      return [
-        ...state,
-        {
-          id: action.id,
-          text: action.text,
-          completed: false
-        }
-      ];
+      return {
+        id: action.id,
+        text: action.text,
+        completed: false
+      };
     case 'TOGGLE_TODO':
-      return state.map(todo => {
-        if (todo.id !== action.id) {
-          return todo;
-        }
+      if (state.id !== action.id) {
+        return state;
+      }
 
-        return {
-          ...todo,
-          completed: !todo.completed
-        };
-      });
+      return {
+        ...state,
+        completed: !state.completed
+      };
     default:
       return state;
   }
 };
 
+const todos = (state = [], action) => {
+  switch (action.type) {
+    case 'ADD_TODO':
+      return [
+        ...state,
+        todo(undefined, action)
+      ];
+    case 'TOGGLE_TODO':
+      return state.map(t =>
+        todo(t, action)
+      );
+    default:
+      return state;
+  }
+};
+
+const visibilityFilter = (
+  state = 'SHOW_ALL',
+  action
+) => {
+  switch (action.type) {
+    case 'SET_VISIBILITY_FILTER':
+      return action.filter;
+    default:
+      return state;
+  }
+};
+
+//const { combineReducers } = Redux;
+const todoApp = combineReducers({
+  todos,    //this is the same as todos: todos (the first is the key in the state object, the second is the name of the reducer that needs to be called)
+  visibilityFilter
+});
+
 //const { createStore } = Redux;
-const store = createStore(todos);
+const store = createStore(todoApp);
 
 let nextTodoId = 0;
 class TodoApp extends React.Component {
@@ -77,7 +106,7 @@ class TodoApp extends React.Component {
 const render = () => {
   ReactDOM.render(
     <TodoApp
-      todos={store.getState()}
+      todos={store.getState().todos}
     />,
     document.getElementById('app')
   );
