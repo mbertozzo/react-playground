@@ -52,14 +52,10 @@ const visibilityFilter = (
   }
 };
 
-//const { combineReducers } = Redux;
 const todoApp = combineReducers({
-  todos,    //this is the same as todos: todos (the first is the key in the state object, the second is the name of the reducer that needs to be called)
+  todos,
   visibilityFilter
 });
-
-//const { createStore } = Redux;
-const store = createStore(todoApp);
 
 const Link = ({
   active,
@@ -84,6 +80,7 @@ const Link = ({
 
 class FilterLink extends React.Component {
   componentDidMount() {
+    const { store } = this.context;
     this.unsubscribe = store.subscribe(() =>
       this.forceUpdate()
     );
@@ -95,6 +92,7 @@ class FilterLink extends React.Component {
   
   render() {
     const props = this.props;
+    const { store } = this.context;
     const state = store.getState();
     
     return (
@@ -115,6 +113,9 @@ class FilterLink extends React.Component {
     );
   }
 }
+FilterLink.contextTypes = {
+  store: React.PropTypes
+};
 
 const Footer = () => (
   <p>
@@ -174,7 +175,7 @@ const TodoList = ({
 );
 
 let nextTodoId = 0;
-const AddTodo = () => {
+const AddTodo = (props, { store }) => {
   let input;
 
   return (
@@ -194,6 +195,9 @@ const AddTodo = () => {
       </button>
     </div>
   );
+};
+AddTodo.contextTypes = {
+  store: React.PropTypes
 };
 
 const getVisibleTodos = (
@@ -216,6 +220,7 @@ const getVisibleTodos = (
 
 class VisibleTodoList extends React.Component {
   componentDidMount() {
+    const { store } = this.context;
     this.unsubscribe = store.subscribe(() =>
       this.forceUpdate()
     );
@@ -227,6 +232,7 @@ class VisibleTodoList extends React.Component {
   
   render() {
     const props = this.props;
+    const { store } = this.context;
     const state = store.getState();
     
     return (
@@ -247,6 +253,9 @@ class VisibleTodoList extends React.Component {
     );
   }
 }
+VisibleTodoList.contextTypes = {
+  store: React.PropTypes
+};
 
 const TodoApp = () => (
   <div>
@@ -256,8 +265,24 @@ const TodoApp = () => (
   </div>
 );
 
+class Provider extends React.Component {
+  getChildContext() {
+    return {
+      store: this.props.store
+    }; 
+  }
+
+  render() {
+    return this.props.children;
+  }
+}
+Provider.childContextTypes = {
+  store: React.PropTypes
+};
 
 ReactDOM.render(
-  <TodoApp />,
+  <Provider store={createStore(todoApp)}>
+    <TodoApp />
+  </Provider>,
   document.getElementById('app')
 );
