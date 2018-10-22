@@ -3,6 +3,11 @@ import ReactDOM from 'react-dom';
 import { createStore, combineReducers } from 'redux';
 import { Provider, connect } from 'react-redux';
 
+// dev tools middleware
+const reduxDevTools =
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+
+
 const todo = (state, action) => {
   switch (action.type) {
     case 'ADD_TODO':
@@ -253,7 +258,7 @@ const TodoApp = () => (
 );
 
 ReactDOM.render(
-  <Provider store={createStore(todoApp)}>
+  <Provider store={createStore(todoApp, reduxDevTools)}>
     <TodoApp />
   </Provider>,
   document.getElementById('app')
