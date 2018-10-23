@@ -15,10 +15,10 @@ The repo has various branches, each one is dedicated to a specific exercise.
 
 * branch `redux` &rarr; todo app made with redux, following Dan Abramov's course on *egghead.io*
 
-Foobar is a Python library for dealing with word pluralization.
+* branch `redux-saga` &rarr; simple implementation of Redux Saga [following this tutorial](https://hackernoon.com/redux-saga-tutorial-for-beginners-and-dog-lovers-aa69a17db645)
 
 ## Installation
 To get started with each of the exercises, you'll just need to clone the appropriate branch and install dependencies with `$ yarn`. To launch devServer on `localhost:8090`, type `$ yarn start`.
 
 ## Credits
-Each exercise is built on top of the [react minimal starter kit](https://github.com/moebiusmania/react-minimal) by moebiusmania.
+Each exercise, apart from what stored in the `redux-saga` branch, is built on top of the [react minimal starter kit](https://github.com/moebiusmania/react-minimal) by moebiusmania.
