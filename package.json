@@ -1,36 +1,29 @@
 {
-  "name": "react-playground",
-  "description": "A playground to get started with React.js",
-  "version": "1.0",
-  "main": "index.js",
-  "author": "Matteo Bertozzo",
-  "license": "MIT",
-  "scripts": {
-    "start": "webpack-dev-server --hot",
-    "build": "NODE_ENV=production webpack",
-    "deploy": "gh-pages -d ./dist",
-    "build:deploy": "npm run build && npm run deploy"
-  },
+  "name": "react-redux-saga",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "normalize.css": "8.0.0",
-    "react": "16.4.1",
-    "react-dom": "16.4.1"
+    "axios": "^0.18.0",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-redux": "^5.0.7",
+    "react-scripts": "2.0.5",
+    "redux": "^4.0.1",
+    "redux-saga": "^0.16.2"
   },
-  "devDependencies": {
-    "babel-core": "6.26.3",
-    "babel-loader": "7.1.5",
-    "babel-preset-env": "1.7.0",
-    "babel-preset-react": "6.24.1",
-    "css-loader": "1.0.0",
-    "gh-pages": "1.2.0",
-    "html-webpack-plugin": "3.2.0",
-    "node-sass": "4.9.2",
-    "sass-loader": "7.0.3",
-    "style-loader": "0.21.0",
-    "webpack": "4.16.1",
-    "webpack-cli": "3.0.8",
-    "webpack-dev-server": "3.1.4",
-    "webpack-notifier": "1.6.0",
-    "webpack-pwa-manifest": "3.6.2"
-  }
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
